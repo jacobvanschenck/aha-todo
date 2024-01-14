@@ -1,0 +1,12 @@
+---
+import TodoItem from "../../../components/TodoItem.astro"
+import { addTodo } from '../../../data/todos'
+
+export const partial = true
+
+if(Astro.request.method !== 'POST') return new Response("todo required", { status: 400 })
+
+const name = (await Astro.request.formData()).get('todo').toString()
+const newTodo = addTodo(name)
+---
+<TodoItem todo={newTodo} />
