@@ -3,12 +3,6 @@ export const partial = true;
 
 const todos = ["task1", 'task2', 'task3'];
 
-if(Astro.request.method === 'PUT') {
-  const todo = (await Astro.request.formData()).get('todo')
-  todos.push(todo)
-}
-
-
 ---
 
 <ul class="">{todos.map(t => (<li>{t}</li>))}</ul>

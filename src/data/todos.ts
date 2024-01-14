@@ -38,3 +38,13 @@ export function addTodo(name: string) {
 export function deleteById(id: string) {
   todos = todos.filter((t) => t.id !== id);
 }
+
+export function getTodoById(id: string) {
+  return todos.find((t) => t.id === id);
+}
+
+export function updateTodo(id: string, todo: Partial<Todo>) {
+  todos = todos.map((t) => (t.id === id ? { ...t, ...todo } : t));
+
+  return todos.find((t) => t.id === id);
+}
