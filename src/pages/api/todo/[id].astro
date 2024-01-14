@@ -1,0 +1,13 @@
+---
+export const partial = true
+import { deleteById } from '../../../data/todos'
+
+const { id } = Astro.params
+
+if(Astro.request.method === 'DELETE'){
+  deleteById(id)
+
+}
+---
+
+

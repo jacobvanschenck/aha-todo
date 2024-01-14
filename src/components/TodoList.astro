@@ -1,0 +1,7 @@
+---
+import TodoItem from "./TodoItem.astro"
+
+const {todos} =  Astro.props
+---
+
+{todos.map(t => <TodoItem todo={t} />)}

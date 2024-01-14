@@ -1,0 +1,9 @@
+---
+const {todo} = Astro.props
+---
+<li id={`todo-${todo.id}`}>
+  <input type="checkbox">
+  <label>{todo.name}</label>
+  <button class="cursor-pointer hover:scale-105 bg-red-500 px-4 py-2 rounded-lg transition-all duration-100" hx-target={`#todo-${todo.id}`} hx-delete={`/api/todo/${todo.id}`}>delete</button>
+</li>
+

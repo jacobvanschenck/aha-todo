@@ -1,0 +1,13 @@
+---
+export const partial = true;
+
+const todo = (await Astro.request.formData()).get('todo')
+const fetched = await fetch('http://localhost:4321/api/getTodos')
+
+console.log('todo', todo)
+console.log('fetched', fetched)
+
+const todos = [...fetched, todo]
+---
+
+<div>ohhhhhhhhhhhh</div>
