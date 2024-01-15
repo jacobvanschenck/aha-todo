@@ -1,7 +1,12 @@
 ---
-import TodoItem from "./TodoItem.astro"
+import type { Todo } from '../data/todos';
+import TodoItem from './TodoItem.astro';
 
-const {todos} =  Astro.props
+export interface Props {
+  todos: Array<Todo>;
+}
+
+const { todos } = Astro.props;
 ---
 
-{todos.map(t => <TodoItem todo={t} />)}
+{todos.map((t) => <TodoItem todo={t} />)}

@@ -1,21 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import TodoList from '../components/TodoList.astro'
-import { getTodos } from '../data/todos'
+import TodoList from '../components/TodoList.astro';
+import { getTodos } from '../data/todos';
 ---
 
 <Layout title="Welcome to Astro">
   <main class="px-8 py-12">
     <h1 class="font-bold text-5xl pb-8">Todo MVP App</h1>
-    <form class="pb-4" hx-post='/api/todo/create' hx-target='#todo-list' hx-swap='beforeend'>
+    <form
+      class="pb-4"
+      hx-post="/api/todo/create"
+      hx-target="#todo-list"
+      hx-swap="beforeend"
+      _="on htmx:afterOnLoad set #todo-name.value to ''"
+    >
       <label>
-        <input class="text-slate-950 px-4 py-2 rounded-lg mr-2" name='todo' required/>
+        <input
+          id="todo-name"
+          class="text-slate-950 px-4 py-2 rounded-lg mr-2"
+          name="todo"
+          required
+        />
       </label>
-      <button type='submit' class="cursor-pointer hover:scale-105 bg-green-500 px-4 py-2 rounded-lg transition-all duration-100">Create Todo</button>
+      <button
+        type="submit"
+        class="cursor-pointer hover:scale-105 bg-green-500 px-4 py-2 rounded-lg transition-all duration-100"
+        >Create Todo</button
+      >
     </form>
-    <ul class="space-y-2" id='todo-list'>
+    <ul class="space-y-2" id="todo-list">
       <TodoList todos={getTodos()} />
     </ul>
   </main>
 </Layout>
-

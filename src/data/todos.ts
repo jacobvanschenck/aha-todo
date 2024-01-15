@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 
 export type Todo = {
   name: string;
@@ -8,12 +8,12 @@ export type Todo = {
 
 let todos: Array<Todo> = [
   {
-    name: "item1",
+    name: 'item1',
     id: uuid(),
     done: false,
   },
   {
-    name: "item2",
+    name: 'item2',
     id: uuid(),
     done: true,
   },

@@ -1,19 +1,28 @@
 ---
-const {todo} = Astro.props
+import type { Todo } from '../data/todos';
+
+export interface Props {
+  todo: Todo;
+}
+
+const { todo } = Astro.props;
 ---
+
 <li id={`todo-${todo.id}`}>
-  <input 
+  <input
     class="peer"
-    type="checkbox" 
-    checked={todo.done} 
-    hx-patch={`/api/todo/${todo.id}`} 
-    hx-target={`#todo-${todo.id}`} 
-    hx-swap='outerHTML'>
-  <label class='peer-checked:line-through peer-checked:text-slate-600'>{todo.name}</label>
+    type="checkbox"
+    checked={todo.done}
+    hx-patch={`/api/todo/${todo.id}`}
+    hx-target={`#todo-${todo.id}`}
+    hx-swap="outerHTML"
+  />
+  <label class="peer-checked:line-through peer-checked:text-slate-600"
+    >{todo.name}</label
+  >
   <button
     class="cursor-pointer hover:scale-105 bg-red-500 px-2 py-1 text-sm rounded-lg transition-all duration-100"
-    hx-target={`#todo-${todo.id}`} 
-    hx-delete={`/api/todo/${todo.id}`}
-  >delete</button>
+    hx-target={`#todo-${todo.id}`}
+    hx-delete={`/api/todo/${todo.id}`}>delete</button
+  >
 </li>
-

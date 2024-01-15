@@ -1,12 +1,16 @@
 ---
-import TodoItem from "../../../components/TodoItem.astro"
-import { addTodo } from '../../../data/todos'
+import TodoItem from '../../../components/TodoItem.astro';
+import { addTodo } from '../../../data/todos';
 
-export const partial = true
+export const partial = true;
 
-if(Astro.request.method !== 'POST') return new Response("todo required", { status: 400 })
+if (Astro.request.method !== 'POST')
+  return new Response('todo required', { status: 400 });
 
-const name = (await Astro.request.formData()).get('todo').toString()
-const newTodo = addTodo(name)
+const data = await Astro.request.formData();
+const name = data.get('todo')?.toString();
+if (!name) return new Response('field cannot be empty', { status: 400 });
+const newTodo = addTodo(name);
 ---
+
 <TodoItem todo={newTodo} />
