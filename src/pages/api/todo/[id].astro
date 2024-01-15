@@ -12,14 +12,14 @@ if (Astro.request.method === 'DELETE') {
 
 let todo = getTodoById(id);
 
-if (!todo) {
-  return new Response('todo cannot be empty', { status: 400 });
-}
-
 if (Astro.request.method === 'PATCH') {
+  if (!todo) {
+    return new Response('todo cannot be empty', { status: 400 });
+  }
+
   todo = updateTodo(id, { done: !todo.done });
   console.log('todo', todo);
 }
 ---
 
-{Astro.request.method === 'PATCH' && <TodoItem todo={todo} />}
+{Astro.request.method === 'PATCH' && todo && <TodoItem todo={todo} />}
